@@ -56,7 +56,11 @@ struct Args {
 }
 
 fn main() {
-    let args = Args::parse();
+    let padding = aerospace::get_padding().expect("Unable to get padding from aerospace config");
+    println!(
+        "{} {} {} {}",
+        padding.inner.vertical, padding.inner.horizontal, padding.outer.top, padding.outer.bottom,
+    );
 
     let (mac_events_tx, mac_events_rx) = flume::unbounded();
     let (navigation_events_tx, navigation_events_rx) = flume::unbounded::<NavigationEvent>();
