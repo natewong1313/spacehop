@@ -1,4 +1,3 @@
-use clap::Parser;
 use core_foundation::base::{TCFType, ToVoid};
 use core_foundation::dictionary::CFDictionary;
 use core_foundation::number::{CFNumber, CFNumberRef};
@@ -6,7 +5,7 @@ use core_graphics::display::{
     CFDictionaryRef, CGDisplay, CGRect, kCGWindowListExcludeDesktopElements,
 };
 use core_graphics::window::{self, kCGWindowListOptionOnScreenOnly};
-use rdev::{Event, listen};
+use rdev::listen;
 use std::ffi::c_void;
 
 use crate::keyboard::NavigationEvent;
@@ -43,16 +42,6 @@ fn get_focused_window_bounds(window_id: i32) -> Option<()> {
     }
 
     None
-}
-
-/// TODO: parse from .aerospace.toml instead
-#[derive(Parser, Debug)]
-#[command(version, about, long_about = None)]
-struct Args {
-    #[arg(short)]
-    left_padding: u64,
-    #[arg(short)]
-    right_padding: u64,
 }
 
 fn main() {
